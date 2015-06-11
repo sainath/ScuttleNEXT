@@ -8,5 +8,3 @@ To start off Admin Consolse would be a awesome feature
 Install
 -------
 Create a database(sql provided) and point that in the config file.
-
-Happy Coding :)
