@@ -10,4 +10,7 @@ Install
 Create a database(sql provided) and point that in the config file.
 
 
-ScuttleNEXT
+New ScuttleNEXT UI
+
+![Alt text](https://github.com/sainath/ScuttleNEXT/blob/master/ScuttleNEXT.png "New ScuttleNEXT UI")
+
