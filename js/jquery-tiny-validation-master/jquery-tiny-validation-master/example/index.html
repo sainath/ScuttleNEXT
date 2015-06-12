@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TinyValidation example</title>
+  <script src="jquery.js"></script>
+  <script src="../tinyvalidation.js"></script>
+  <script>
+    $(document).ready(function() {
+      var options = {
+        validateOnKeyUp: true,
+        onError: function(errors) {
+          console.log("el: " + this);
+          console.log(errors);
+        },
+        validators: {
+          zipCode: function(zip) {
+            var re = /^\d{5}(-?\d{4})?$/;
+            return re.test(zip) ? true : "Invalid zip code (ex. 12345 or 12345-1234)";
+          }
+        }
+      };
+      $('form').tinyValidation(options);
+    });
+  </script>
+  <style>
+    label {
+      font-weight: bold;
+    }
+
+    label, input {
+      display: block;
+    }
+
+    input {
+      margin-bottom: 16px;
+    }
+
+    ol {
+      list-style-type: none; 
+    }
+
+    .error {
+      border: 2px solid red;
+    }
+
+    .valid {
+      background-color: #99EE77;
+    }
+  </style>
+</head>
+
+<body>
+  <form>
+    <ol>
+      <li>
+        <label for="name">Name</label>
+        <input type="text" id="name" data-validate="notEmpty, four" />
+      </li>
+      <li>
+        <label for="email">Email</label>
+        <input type="text" id="email" data-validate="email, notEmpty" />
+      </li>
+      <li>
+        <label for="email_confirmation">Confirm email</label>
+        <input type="text" id="email_email" data-validate="email, notEmpty, matchesOtherField" data-match-field-selector="#email" />
+      </li>
+      <li>
+        <label for="bio">Bio</label>
+        <textarea id="bio" data-validate="notEmpty"></textarea>
+      </li>
+      <li>
+        <label for="zip">Zip</label>
+        <input type="text" id="zip" data-validate="zipCode" />
+      </li>
+      <li>
+        <input type="submit" />
+      </li>
+    </ol>
+  </form>
+</body>
